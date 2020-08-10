@@ -19,7 +19,6 @@
 		}
 
 	}else{
-		header('location:registration.php');
 	}
 ?>
 
