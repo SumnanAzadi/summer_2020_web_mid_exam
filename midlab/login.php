@@ -1,3 +1,35 @@
+<?php
+	session_start();
+	require_once('config.php');
+	if(isset($_POST['submit'])){
+		$uname = $_POST['uname'];
+		$password = $_POST['pass'];
+
+		if(empty($uname) == true || empty($password) == true){
+			echo "null submission!";
+		}else{
+
+			$count = validate($uname, $password);
+
+			if($count > 0){
+				
+				$_SESSION['username'] = $uname;
+				$_SESSION['password'] = $password;
+
+				setcookie("username", $uname, time()+3600, "/");
+				header('location:home.php');
+
+			}else{
+				echo "invalid username/password";
+			}
+		}
+	}else{
+		
+	}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +55,11 @@
 						<table>
 							<tr>
 								<td>User Name</td>
-								<td>:<input type="text" name="user"></td>
+								<td>:<input type="text" name="uname"></td>
 							</tr>
 							<tr>
 								<td>Password</td>
-								<td>:<input type="Password" name="upass"></td>
+								<td>:<input type="Password" name="pass"></td>
 							</tr>
 
 							<tr><td colspan="2"><hr></td></tr>	

@@ -14,7 +14,7 @@
 			if($status){
 				header('location:login.php?msg=success');
 			}else{
-				
+				header('location:registration.php');
 			}
 		}
 
@@ -42,7 +42,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<form method="POST" action="">
+				<form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
 					<fieldset>
 						<legend>REGISTRATION</legend>
 						<form method="POST">
